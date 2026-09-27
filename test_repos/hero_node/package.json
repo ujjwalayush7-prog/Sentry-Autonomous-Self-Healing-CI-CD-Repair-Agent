@@ -1,0 +1,12 @@
+{
+  "name": "hero-node-auth",
+  "version": "1.0.0",
+  "description": "Auth and session management service",
+  "main": "src/session_manager.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

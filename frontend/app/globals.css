@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------
+   Sentry Design Tokens
+   Near-black background with warm undertone. Three semantic colors only:
+   amber (in-progress), green (success), red (failure/muted).
+   Typography: Inter (sans) + Geist Mono (mono, local — no network dep).
+------------------------------------------------------------------------- */
+
+:root {
+  /* Surfaces */
+  --bg-base:       #0D0D0F;
+  --bg-surface:    #131316;
+  --bg-raised:     #1A1A1F;
+
+  /* Borders */
+  --border-subtle: #2A2A30;
+  --border-active: #3A3A45;
+
+  /* Text */
+  --text-primary:   #E8E6E1;
+  --text-secondary: #6B6875;
+  --text-dim:       #3D3B45;
+
+  /* Semantic: amber — in-progress / active */
+  --c-amber:        #C9882A;
+  --c-amber-dim:    rgba(201, 136, 42, 0.15);
+  --c-amber-border: rgba(201, 136, 42, 0.45);
+  --c-amber-glow:   rgba(201, 136, 42, 0.12);
+  --c-amber-bg:     #1F1507;
+
+  /* Semantic: green — success / fixed */
+  --c-green:        #3DCF6E;
+  --c-green-dim:    rgba(61, 207, 110, 0.15);
+  --c-green-border: rgba(61, 207, 110, 0.4);
+  --c-green-bg:     #0B1F10;
+
+  /* Semantic: red — failure / muted */
+  --c-red:          #C0524A;
+  --c-red-dim:      rgba(192, 82, 74, 0.15);
+  --c-red-border:   rgba(192, 82, 74, 0.4);
+  --c-red-bg:       #1E0F0E;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Geist Mono injected by layout.tsx as --font-geist-mono CSS var */
+  --font-mono: var(--font-geist-mono), 'Menlo', 'Consolas', monospace;
+}
+
+/* Base resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-base);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remap Tailwind's font-mono utility to Geist Mono via the token */
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* -------------------------------------------------------------------------
+   StateTimeline animations
+------------------------------------------------------------------------- */
+@keyframes node-pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(201, 136, 42, 0);    }
+  50%       { box-shadow: 0 0 0 5px rgba(201, 136, 42, 0.28); }
+}
+@keyframes node-pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(61, 207, 110, 0);    }
+  50%       { box-shadow: 0 0 0 5px rgba(61, 207, 110, 0.22); }
+}
+@keyframes node-pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(192, 82, 74, 0);    }
+  50%       { box-shadow: 0 0 0 5px rgba(192, 82, 74, 0.22); }
+}
+
+.timeline-node-active-amber { animation: node-pulse-amber 2s ease-in-out infinite; }
+.timeline-node-active-green { animation: node-pulse-green 2s ease-in-out infinite; }
+.timeline-node-active-red   { animation: node-pulse-red   2s ease-in-out infinite; }
+
+/* -------------------------------------------------------------------------
+   DiffViewer focal panel — applied to the wrapper div in page.tsx
+------------------------------------------------------------------------- */
+.diff-focal-panel {
+  border-color: var(--c-amber-border) !important;
+  box-shadow: 0 0 0 1px rgba(201, 136, 42, 0.18),
+              0 0 28px 4px var(--c-amber-glow);
+}
+
+/* -------------------------------------------------------------------------
+   Scrollbar — minimal, matches surface
+------------------------------------------------------------------------- */
+::-webkit-scrollbar               { width: 6px; height: 6px; }
+::-webkit-scrollbar-track         { background: var(--bg-base); }
+::-webkit-scrollbar-thumb         { background: var(--border-active); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover   { background: var(--text-dim); }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}

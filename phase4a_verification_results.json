@@ -1,0 +1,103 @@
+{
+  "phase": "Phase 4a - GitHub PR/Git Integration Verification",
+  "throwaway_repo_url": "https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+  "base_commit_sha": "0d8c05e955c785ca7d9d54bfc2c817481b38696a",
+  "pr_result": {
+    "success": true,
+    "pr_url": "https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+    "pr_number": 1,
+    "title": "fix(tax_calculator.py): The compute_total_with_tax function was subtracting tax_amount from subto...",
+    "body": "## Sentry Self-Healing CI/CD \u2014 Automated Root-Cause Fix\n\n### 1. Root Cause & Fix Summary\n**Target File:** `billing/tax_calculator.py`\n\nThe compute_total_with_tax function was subtracting tax_amount from subtotal instead of adding it, causing a $100.00 order with 8% tax to return $92.00 rather than $108.00. Replacing the subtraction operator with addition resolves the invoice calculation failure across all test cases.\n\n#### Diagnostic Hypothesis\n> Primary Suspect: billing/tax_calculator.py (confidence 0.98). Line 5 uses '-' instead of '+' when combining subtotal and tax_amount.\n\n---\n\n### 2. Test Suite Validation (Before vs. After)\n\n| Metric | Before Patch (Red) | After Patch (Green) |\n| :--- | :---: | :---: |\n| **Total Tests** | 2 | 2 |\n| **Passed** | 1 | **2** |\n| **Failed** | 1 | **0** |\n| **Suite Status** | `FAILED` | `PASSED` |\n\n---\n\n### 3. Validated Minimal Patch\n```diff\n--- a/billing/tax_calculator.py\n+++ b/billing/tax_calculator.py\n@@ -1,5 +1,5 @@\n def compute_total_with_tax(subtotal: float, tax_rate: float = 0.08) -> float:\n     \"\"\"Computes total invoice amount including sales tax.\"\"\"\n-    # BUG: Subtracts tax instead of adding it to subtotal\n     tax_amount = subtotal * tax_rate\n-    return round(subtotal - tax_amount, 2)\n+    return round(subtotal + tax_amount, 2)\n```\n\n---\n*Generated autonomously by **Sentry** (Reasoning Backbone: `ibm/granite-3-8b-instruct` | Validated in 1 attempt(s)).*\n",
+    "branch_name": "sentry/fix-tax_calculator-1790388919",
+    "base_branch": "main",
+    "commit_sha": "401b92461bde0ceef5cb1f2386504c4e955ed284",
+    "repo_full_name": "ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+    "event": {
+      "event_type": "pr_created",
+      "state": "PR_CREATE",
+      "timestamp": "2026-09-26T07:45:23+0530",
+      "message": "Pull Request #1 opened: https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+      "data": {
+        "pr_url": "https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+        "pr_number": 1,
+        "title": "fix(tax_calculator.py): The compute_total_with_tax function was subtracting tax_amount from subto...",
+        "branch_name": "sentry/fix-tax_calculator-1790388919",
+        "base_branch": "main",
+        "commit_sha": "401b92461bde0ceef5cb1f2386504c4e955ed284",
+        "repo_full_name": "ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+        "body": "## Sentry Self-Healing CI/CD \u2014 Automated Root-Cause Fix\n\n### 1. Root Cause & Fix Summary\n**Target File:** `billing/tax_calculator.py`\n\nThe compute_total_with_tax function was subtracting tax_amount from subtotal instead of adding it, causing a $100.00 order with 8% tax to return $92.00 rather than $108.00. Replacing the subtraction operator with addition resolves the invoice calculation failure across all test cases.\n\n#### Diagnostic Hypothesis\n> Primary Suspect: billing/tax_calculator.py (confidence 0.98). Line 5 uses '-' instead of '+' when combining subtotal and tax_amount.\n\n---\n\n### 2. Test Suite Validation (Before vs. After)\n\n| Metric | Before Patch (Red) | After Patch (Green) |\n| :--- | :---: | :---: |\n| **Total Tests** | 2 | 2 |\n| **Passed** | 1 | **2** |\n| **Failed** | 1 | **0** |\n| **Suite Status** | `FAILED` | `PASSED` |\n\n---\n\n### 3. Validated Minimal Patch\n```diff\n--- a/billing/tax_calculator.py\n+++ b/billing/tax_calculator.py\n@@ -1,5 +1,5 @@\n def compute_total_with_tax(subtotal: float, tax_rate: float = 0.08) -> float:\n     \"\"\"Computes total invoice amount including sales tax.\"\"\"\n-    # BUG: Subtracts tax instead of adding it to subtotal\n     tax_amount = subtotal * tax_rate\n-    return round(subtotal - tax_amount, 2)\n+    return round(subtotal + tax_amount, 2)\n```\n\n---\n*Generated autonomously by **Sentry** (Reasoning Backbone: `ibm/granite-3-8b-instruct` | Validated in 1 attempt(s)).*\n"
+      }
+    },
+    "error_message": null
+  },
+  "emitted_pr_created_event": {
+    "event_type": "pr_created",
+    "state": "PR_CREATE",
+    "timestamp": "2026-09-26T07:45:23+0530",
+    "message": "Pull Request #1 opened: https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+    "data": {
+      "pr_url": "https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+      "pr_number": 1,
+      "title": "fix(tax_calculator.py): The compute_total_with_tax function was subtracting tax_amount from subto...",
+      "branch_name": "sentry/fix-tax_calculator-1790388919",
+      "base_branch": "main",
+      "commit_sha": "401b92461bde0ceef5cb1f2386504c4e955ed284",
+      "repo_full_name": "ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+      "body": "## Sentry Self-Healing CI/CD \u2014 Automated Root-Cause Fix\n\n### 1. Root Cause & Fix Summary\n**Target File:** `billing/tax_calculator.py`\n\nThe compute_total_with_tax function was subtracting tax_amount from subtotal instead of adding it, causing a $100.00 order with 8% tax to return $92.00 rather than $108.00. Replacing the subtraction operator with addition resolves the invoice calculation failure across all test cases.\n\n#### Diagnostic Hypothesis\n> Primary Suspect: billing/tax_calculator.py (confidence 0.98). Line 5 uses '-' instead of '+' when combining subtotal and tax_amount.\n\n---\n\n### 2. Test Suite Validation (Before vs. After)\n\n| Metric | Before Patch (Red) | After Patch (Green) |\n| :--- | :---: | :---: |\n| **Total Tests** | 2 | 2 |\n| **Passed** | 1 | **2** |\n| **Failed** | 1 | **0** |\n| **Suite Status** | `FAILED` | `PASSED` |\n\n---\n\n### 3. Validated Minimal Patch\n```diff\n--- a/billing/tax_calculator.py\n+++ b/billing/tax_calculator.py\n@@ -1,5 +1,5 @@\n def compute_total_with_tax(subtotal: float, tax_rate: float = 0.08) -> float:\n     \"\"\"Computes total invoice amount including sales tax.\"\"\"\n-    # BUG: Subtracts tax instead of adding it to subtotal\n     tax_amount = subtotal * tax_rate\n-    return round(subtotal - tax_amount, 2)\n+    return round(subtotal + tax_amount, 2)\n```\n\n---\n*Generated autonomously by **Sentry** (Reasoning Backbone: `ibm/granite-3-8b-instruct` | Validated in 1 attempt(s)).*\n"
+    }
+  },
+  "all_events": [
+    {
+      "event_type": "reasoning_step",
+      "state": "PR_CREATE",
+      "timestamp": "2026-09-26T07:45:17+0530",
+      "message": "Cloning ujjwalayush7-prog/sentry-pr-hook-test-scratch to prepare Pull Request branch...",
+      "data": {
+        "step_number": 1,
+        "description": "Cloning ujjwalayush7-prog/sentry-pr-hook-test-scratch to prepare Pull Request branch...",
+        "repo_full_name": "ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+        "base_branch": "main"
+      }
+    },
+    {
+      "event_type": "reasoning_step",
+      "state": "PR_CREATE",
+      "timestamp": "2026-09-26T07:45:19+0530",
+      "message": "Created fix branch `sentry/fix-tax_calculator-1790388919` and applying validated patch to `billing/tax_calculator.py`...",
+      "data": {
+        "step_number": 2,
+        "description": "Created fix branch `sentry/fix-tax_calculator-1790388919` and applying validated patch to `billing/tax_calculator.py`...",
+        "branch_name": "sentry/fix-tax_calculator-1790388919",
+        "target_file": "billing/tax_calculator.py"
+      }
+    },
+    {
+      "event_type": "reasoning_step",
+      "state": "PR_CREATE",
+      "timestamp": "2026-09-26T07:45:19+0530",
+      "message": "Committed fix (401b924). Pushing branch `sentry/fix-tax_calculator-1790388919` to GitHub...",
+      "data": {
+        "step_number": 3,
+        "description": "Committed fix (401b924). Pushing branch `sentry/fix-tax_calculator-1790388919` to GitHub...",
+        "commit_sha": "401b92461bde0ceef5cb1f2386504c4e955ed284",
+        "branch_name": "sentry/fix-tax_calculator-1790388919"
+      }
+    },
+    {
+      "event_type": "pr_created",
+      "state": "PR_CREATE",
+      "timestamp": "2026-09-26T07:45:23+0530",
+      "message": "Pull Request #1 opened: https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+      "data": {
+        "pr_url": "https://github.com/ujjwalayush7-prog/sentry-pr-hook-test-scratch/pull/1",
+        "pr_number": 1,
+        "title": "fix(tax_calculator.py): The compute_total_with_tax function was subtracting tax_amount from subto...",
+        "branch_name": "sentry/fix-tax_calculator-1790388919",
+        "base_branch": "main",
+        "commit_sha": "401b92461bde0ceef5cb1f2386504c4e955ed284",
+        "repo_full_name": "ujjwalayush7-prog/sentry-pr-hook-test-scratch",
+        "body": "## Sentry Self-Healing CI/CD \u2014 Automated Root-Cause Fix\n\n### 1. Root Cause & Fix Summary\n**Target File:** `billing/tax_calculator.py`\n\nThe compute_total_with_tax function was subtracting tax_amount from subtotal instead of adding it, causing a $100.00 order with 8% tax to return $92.00 rather than $108.00. Replacing the subtraction operator with addition resolves the invoice calculation failure across all test cases.\n\n#### Diagnostic Hypothesis\n> Primary Suspect: billing/tax_calculator.py (confidence 0.98). Line 5 uses '-' instead of '+' when combining subtotal and tax_amount.\n\n---\n\n### 2. Test Suite Validation (Before vs. After)\n\n| Metric | Before Patch (Red) | After Patch (Green) |\n| :--- | :---: | :---: |\n| **Total Tests** | 2 | 2 |\n| **Passed** | 1 | **2** |\n| **Failed** | 1 | **0** |\n| **Suite Status** | `FAILED` | `PASSED` |\n\n---\n\n### 3. Validated Minimal Patch\n```diff\n--- a/billing/tax_calculator.py\n+++ b/billing/tax_calculator.py\n@@ -1,5 +1,5 @@\n def compute_total_with_tax(subtotal: float, tax_rate: float = 0.08) -> float:\n     \"\"\"Computes total invoice amount including sales tax.\"\"\"\n-    # BUG: Subtracts tax instead of adding it to subtotal\n     tax_amount = subtotal * tax_rate\n-    return round(subtotal - tax_amount, 2)\n+    return round(subtotal + tax_amount, 2)\n```\n\n---\n*Generated autonomously by **Sentry** (Reasoning Backbone: `ibm/granite-3-8b-instruct` | Validated in 1 attempt(s)).*\n"
+      }
+    }
+  ]
+}

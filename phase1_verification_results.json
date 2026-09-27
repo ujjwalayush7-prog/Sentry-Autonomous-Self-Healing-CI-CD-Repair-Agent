@@ -1,0 +1,29 @@
+{
+  "phase": "Phase 1 - Sandbox Execution Layer Verification",
+  "python_hero_result": {
+    "passed": false,
+    "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- C:\\Users\\ujjwa\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ujjwa\\AppData\\Local\\Temp\\sentry_sandbox_xykc21un\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.13.0\ncollecting ... collected 4 items\n\ntests/test_pricing.py::test_regular_customer_no_discount PASSED          [ 25%]\ntests/test_pricing.py::test_gold_customer_discount PASSED                [ 50%]\ntests/test_pricing.py::test_vip_customer_discount FAILED                 [ 75%]\ntests/test_pricing.py::test_zero_amount_order PASSED                     [100%]\n\n================================== FAILURES ===================================\n_________________________ test_vip_customer_discount __________________________\n\n    def test_vip_customer_discount():\n        # VIP customer: 20% discount ($20.0) -> $80 subtotal + 5% tax ($4.0) = $84.0\n        price = calculate_final_price(100.0, \"VIP\", 0.05)\n>       assert price == 84.0, f\"Expected VIP final bill to be 84.0, but received {price}\"\nE       AssertionError: Expected VIP final bill to be 84.0, but received 21.0\nE       assert 21.0 == 84.0\n\ntests\\test_pricing.py:20: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_pricing.py::test_vip_customer_discount - AssertionError: Ex...\n========================= 1 failed, 3 passed in 0.12s =========================\n",
+    "stderr": "",
+    "stack_trace": "================================\n_________________________ test_vip_customer_discount __________________________\n\n    def test_vip_customer_discount():\n        # VIP customer: 20% discount ($20.0) -> $80 subtotal + 5% tax ($4.0) = $84.0\n        price = calculate_final_price(100.0, \"VIP\", 0.05)\n>       assert price == 84.0, f\"Expected VIP final bill to be 84.0, but received {price}\"\nE       AssertionError: Expected VIP final bill to be 84.0, but received 21.0\nE       assert 21.0 == 84.0\n\ntests\\test_pricing.py:20: AssertionError",
+    "exit_code": 1,
+    "duration_seconds": 0.755,
+    "runtime": "python",
+    "sandbox_type": "local",
+    "commit_sha": null,
+    "repo_url": "C:\\Users\\ujjwa\\.gemini\\antigravity\\scratch\\cicd-sentry\\test_repos\\hero_python",
+    "command_executed": "pytest -v"
+  },
+  "node_hero_result": {
+    "passed": false,
+    "stdout": "\u00e2\u2013\u00b6 Session Manager Verification\n  \u00e2\u0153\u201d should validate active fresh session (0.6292ms)\n  \u00e2\u0153\u2013 should tolerate clock skew when token is near expiration boundary (0.7914ms)\n  \u00e2\u0153\u201d should reject genuinely expired token beyond clock skew (0.1482ms)\n\u00e2\u0153\u2013 Session Manager Verification (2.4998ms)\n\u00e2\u201e\u00b9 tests 3\n\u00e2\u201e\u00b9 suites 1\n\u00e2\u201e\u00b9 pass 2\n\u00e2\u201e\u00b9 fail 1\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 98.7059\n\n\u00e2\u0153\u2013 failing tests:\n\ntest at test\\session.test.js:16:3\n\u00e2\u0153\u2013 should tolerate clock skew when token is near expiration boundary (0.7914ms)\n  AssertionError [ERR_ASSERTION]: Token within clock skew tolerance should be considered valid\n  \n  false !== true\n  \n      at TestContext.<anonymous> (C:\\Users\\ujjwa\\AppData\\Local\\Temp\\sentry_sandbox_ips1njl1\\test\\session.test.js:23:12)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Suite.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Promise.all (index 0)\n      at async Suite.run (node:internal/test_runner/test:1794:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+    "stderr": "",
+    "stack_trace": "failing tests:\n\ntest at test\\session.test.js:16:3\n\u00e2\u0153\u2013 should tolerate clock skew when token is near expiration boundary (0.7914ms)\n  AssertionError [ERR_ASSERTION]: Token within clock skew tolerance should be considered valid\n  \n  false !== true\n  \n      at TestContext.<anonymous> (C:\\Users\\ujjwa\\AppData\\Local\\Temp\\sentry_sandbox_ips1njl1\\test\\session.test.js:23:12)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Suite.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Promise.all (index 0)\n      at async Suite.run (node:internal/test_runner/test:1794:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }",
+    "exit_code": 1,
+    "duration_seconds": 0.244,
+    "runtime": "node",
+    "sandbox_type": "local",
+    "commit_sha": null,
+    "repo_url": "C:\\Users\\ujjwa\\.gemini\\antigravity\\scratch\\cicd-sentry\\test_repos\\hero_node",
+    "command_executed": "node --test"
+  }
+}
